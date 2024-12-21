@@ -4,9 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.alura.screenmatch.model.SerieData;
-import br.com.alura.screenmatch.service.ApiConsume;
-import br.com.alura.screenmatch.service.DataConverter;
+import br.com.alura.screenmatch.main.Main;
 
 @SpringBootApplication
 public class ScreenmatchApplication implements CommandLineRunner{
@@ -17,13 +15,29 @@ public class ScreenmatchApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		ApiConsume apiConsume = new ApiConsume();
-		String json = apiConsume.getData("https://www.omdbapi.com/?t=game+of+thrones&apikey=cfbbc0b3");
 
-		DataConverter converter = new DataConverter();
-		SerieData data = converter.getData(json, SerieData.class);
+		Main main = new Main();
+		main.showMenu();
+		// ApiConsume apiConsume = new ApiConsume();
 
-		System.out.println(data);
+		// DataConverter converter = new DataConverter();
+		
+		// String json = apiConsume.getData("https://www.omdbapi.com/?t=game+of+thrones&apikey=cfbbc0b3");
+		// SerieData data = converter.getData(json, SerieData.class);
+		// System.out.println(data);
+
+		// json = apiConsume.getData("https://www.omdbapi.com/?t=game+of+thrones&season=1&episode=2&apikey=cfbbc0b3");
+		// EpisodeData episodeData = converter.getData(json, EpisodeData.class);
+		// System.out.println(episodeData);
+
+	// 	List<SeasonData> seasons = new ArrayList<>();
+	// 	for (int i = 1; i <= data.totalSeasons(); i++) {
+	// 		json = apiConsume.getData("https://www.omdbapi.com/?t=game+of+thrones&season="+ i +"&apikey=cfbbc0b3");
+	// 		SeasonData seasonData = converter.getData(json, SeasonData.class);
+	// 		seasons.add(seasonData);
+	// 	}
+
+	// 	seasons.forEach(System.out::println);
 	}
 
 }
